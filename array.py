@@ -114,7 +114,235 @@ class Demo(object):
             elif n>third and n!=first and n!= second:
                 third=n
         return third
-    
+
+
+
+#practise
+
+# Template
+
+'''window_sum = sum of first k elements
+max_answer = window_sum
+
+for i from k to end:
+    window_sum += arr[i]        # add new element
+    window_sum -= arr[i - k]    # remove old element
+    update answer
+
+return answer
+
+'''
+
+#max sum array
+'''
+class Demo(object):
+    def maxSumSubarray(self, arr, k):
+        window_sum = sum(arr[:k])
+        max_sum = window_sum
+
+        for i in range(k, len(arr)):
+            window_sum += arr[i]      # add new element
+            window_sum -= arr[i - k]  # remove old element
+            max_sum = max(max_sum, window_sum)
+            start = i - k + 1 
+        return max_sum
+
+
+d = Demo()
+arr = [2, 1, 5, 1, 3, 2]
+k = 3
+print(d.maxSumSubarray(arr, k))
+
+class Demo(object):
+    def maxSumSubarray(self, arr, k):
+        window_sum = sum(arr[:k])
+        max_sum = window_sum
+        start = 0   # start index of max window
+
+        for i in range(k, len(arr)):
+            window_sum += arr[i]
+            window_sum -= arr[i - k]
+
+            if window_sum > max_sum:
+                max_sum = window_sum
+                start = i - k + 1   # window start index
+
+        return max_sum, arr[start:start + k]
+
+
+d = Demo()
+arr = [2, 1, 5, 1, 3, 2]
+k = 3
+print(d.maxSumSubarray(arr, k))
+
+'''
+
+
+#1 to 100
+'''class Demo(object):
+    def printstar(self):
+        n=10
+        for i in range(0,n):
+            sp=" "*(n-i-1)
+            sr="*"*(2*i+1)
+            print(sp+sr)           
+
+d=Demo()
+d.printstar()
+'''
+
+
+
+#find max and min in array
+
+
+
+'''class Demo(object):
+
+    def printstar(self,arr):
+        min=arr[0]
+        max=arr[0]
+        for i in range(0,len(arr)):
+            if arr[i]>max:
+                min=max
+                max=arr[i]
+            elif arr[i]<min and arr[i]!=max:
+                min=arr[i]
+            
+            print(max,min)
+                
+                
+arr=[0,5,10,300,51,772,51,2,5,5651]
+d=Demo()
+d.printstar(arr)
+'''
+
+'''
+class Demo(object):
+
+    def printstar(self,arr):
+        min=arr[0]
+        max=arr[0]
+        for i in range(0,len(arr)):
+            if arr[i]<min:
+               min=arr[i]
+            if arr[i]>max:
+                max=arr[i]
+        print(min,max)
+                              
+arr=[0,10,300,51,74472,51,2,5,1,565100,0,1]
+d=Demo()
+d.printstar(arr)
+'''
+
+'''class Demo(object):
+
+    def printstar(self,arr):
+        sum=0
+        for i in range(len(arr)-1,-1,-1):
+                sum+=arr[i]
+        print(sum)
+                              
+arr=[5,10,20,30,40]
+d=Demo()
+d.printstar(arr)
+'''
+
+
+#second largest array
+
+
+'''class Demo(object):
+
+    def secondlarge(self,arr):
+        secondmax=arr[0] 
+        max=arr[0]
+        for i in range(len(arr)):
+            if arr[i]>max:
+                secondmax=max
+                max=arr[i]
+            elif arr[i]>secondmax and arr[i]!=max: 
+                secondmax=arr[i]
+       
+        print(max,secondmax) 
+                              
+arr=[5,13458880,20,3645680,5,40,26851,2]
+d=Demo()
+d.secondlarge(arr)
+'''
+
+'''
+
+class Demo(object):
+
+    def secondlarge(self,arr):
+        freq={}
+        for num in arr:
+            if num in freq:
+                freq[num]+=1
+            else:
+                freq[num]=1
+        print(freq)
+            
+            
+                              
+arr=[5,2,3,5,1,5,2]
+d=Demo()
+d.secondlarge(arr)
+
+'''
+
+'''
+class Demo(object):
+    def movezero(self,arr):
+        left=0
+        for right in range(len(arr)):
+            if arr[right]!=0:
+                arr[left],arr[right]=arr[right],arr[left]
+                left+=1
+        return arr
+                                       
+arr=[0,5,0,0,0,2,0,5,0,5,2,0,0]
+d=Demo()
+print(d.movezero(arr))
+'''
+'''
+class Demo(object):
+    def revstr(self,arr):
+        left=0
+        right=len(arr)-1
+        arr=list(arr)
+        while left<right:
+            arr[left],arr[right]=arr[right],arr[left]
+            right-=1
+            left+=1
+        return "".join(arr)
+                                       
+arr="ankita"
+d=Demo()
+print(d.revstr(arr))
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 d=Demo()
 num=[1,4,3,2,6,8,9]
 print(d.secondlarge(num))
